@@ -1,0 +1,4 @@
+flask
+flask_restful
+semantic_version
+zeroconf
