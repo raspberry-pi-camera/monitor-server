@@ -35,12 +35,11 @@ class HardwareInfo(MethodView):
         hostname = subprocess.check_output(['/bin/hostname']).decode('utf-8').rstrip()
 
         return {
-            "hostname": hostname,
+            "_hostname": hostname,
             "serial": serial.group(1).lstrip("0"),
-            "processors": processors,
-            "board": board.group(1),
-            "gpu_temp": float(gputemp.group(1)),
-            "cpu_temp": cputemp,
-            "warn_temp": 65,
-            "max_temp": 80
+            "_processors": processors,
+            "_board": board.group(1),
+            "temperature": float(gputemp.group(1)),
+            "_warn_temp": 65,
+            "_max_temp": 80
         }
