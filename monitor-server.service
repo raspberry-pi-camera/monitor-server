@@ -1,0 +1,11 @@
+[Unit]
+Description=Monitor Server
+After=basic.target
+
+[Service]
+Type=simple
+ExecStart=/opt/monitor-server/main.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
