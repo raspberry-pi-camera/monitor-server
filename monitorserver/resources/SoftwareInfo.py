@@ -28,18 +28,18 @@ class SoftwareInfo(MethodView):
         env['LD_LIBRARY_PATH'] = "/opt/raspindi/usr/lib"
 
         atemraw = subprocess.check_output(['/opt/raspindi/bin/atem', '-v']).decode('utf-8').rstrip()
-        cameraraw = subprocess.check_output(['/opt/raspindi/bin/camera', '-v']).decode('utf-8').rstrip()
+        startupraw = subprocess.check_output(['/opt/raspindi/bin/startup', '-v']).decode('utf-8').rstrip()
         neopixelraw = subprocess.check_output(['/opt/raspindi/bin/neopixel', '-v']).decode('utf-8').rstrip()
         raspindiraw = subprocess.check_output(['/opt/raspindi/bin/raspindi', '-v'], env=env).decode('utf-8').rstrip()
 
         atem = semantic_version.Version.coerce(atemraw)
-        camera = semantic_version.Version.coerce(cameraraw)
+        startup = semantic_version.Version.coerce(startupraw)
         neopixel = semantic_version.Version.coerce(neopixelraw)
         raspindi = semantic_version.Version.coerce(raspindiraw)
 
         return {
             "atem": str(atem),
-            "camera": str(camera),
+            "startup": str(startup),
             "neopixel": str(neopixel),
             "raspindi": str(raspindi)
         }
